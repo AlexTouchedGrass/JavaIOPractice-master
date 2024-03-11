@@ -54,13 +54,21 @@ public class  ReadingFiles {
                 System.out.println("File Path: " + file);
                 //Moving through file, reading, and printing each line of the selected file
                 while (reader.ready()) {
-                    lineCounter++;
+                    lineCounter++; //This is super easy
                         for (int i = 0; i < rec.length(); i++) {
                             int tempSpaces = 0;
-                            String temp = "";
-                            if (rec.contains(" ")) {
+                            int tempWords = 1; //First line has a word, but to check for the very first word would be a lot of work :D
+                            int tempChars = 0;
+                            String temp = rec.substring(i, i+1);
+                            if (temp.equalsIgnoreCase(" ")) {
                                 tempSpaces++;
+                            } else {
+                                tempChars++;
                             }
+
+                            spaceCounter += tempSpaces;
+                            wordCounter = tempWords + spaceCounter + lineCounter;
+                            charCounter += tempChars;
                         }
                     rec = reader.readLine();
                     line++;
